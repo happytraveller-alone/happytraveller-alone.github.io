@@ -10,10 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="happytraveller,"> 
-    <meta name="description" content="first try,1.How the Greedy Method Works1.1 Optimization problems
-渴婴问题
+    <meta name="description" content="first try,1.How the Greedy Method Works1.1 Optimization problems渴婴问题
 
-假设有一个口渴但很聪明的婴儿，他可以喝一杯水，一箱牛奶等，总共n种液体。令$,"> 
+假设有一个口渴但很聪明的婴儿，他可以喝一杯水，一箱牛奶等，总共n种液体。令$a,"> 
     <meta name="author" content="独行·侠"> 
     <link rel="alternative" href="atom.xml" title="独行·侠" type="application/atom+xml"> 
     <link rel="icon" href="/img/hacknet1.jpg"> 
@@ -85,7 +84,7 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(/img/welcome-cover.jpg) ">
+                url(/img/algorithm.jpg) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
@@ -102,13 +101,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    13k
+                    14k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    22 mins.
+                    23 mins.
                 </span>
                 
                 
@@ -142,24 +141,17 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="1-How-the-Greedy-Method-Works"><a href="#1-How-the-Greedy-Method-Works" class="headerlink" title="1.How the Greedy Method Works"></a>1.How the Greedy Method Works</h2><h3 id="1-1-Optimization-problems"><a href="#1-1-Optimization-problems" class="headerlink" title="1.1 Optimization problems"></a>1.1 Optimization problems</h3>
-<font size =4>渴婴问题</font>
+            <h2 id="1-How-the-Greedy-Method-Works"><a href="#1-How-the-Greedy-Method-Works" class="headerlink" title="1.How the Greedy Method Works"></a>1.How the Greedy Method Works</h2><h3 id="1-1-Optimization-problems"><a href="#1-1-Optimization-problems" class="headerlink" title="1.1 Optimization problems"></a>1.1 Optimization problems</h3><p><font size =4>渴婴问题</font></p>
 
 假设有一个口渴但很聪明的婴儿，他可以喝一杯水，一箱牛奶等，总共n种液体。令$a_i$为第i种液体可用的盎司量。根据她对口味和对营养的渴望的经验，她还为第i种液体分配了一些令人满意的因子$S_i$。
 问题：如果婴儿需要喝几盎司的液体，她应该喝多少液体？
 令$x_i(1\leq i\leq n)$为婴儿将要喝的第i种液体的量，如果未加载容器i，则为0，在其他情况下为1。
 我们期望得到$\max\limits_{x_i\{1\leq i \leq n \}} \{\sum_{i=1}^n x_is_i\}$ 实际的状态分析为$$\begin{cases}max\{\sum_{i=1}^n x_i=t \},  \\ 0 \leq x_i \leq a_i \end{cases}$$
 
-<font size =4>装货问题</font>
 
-一艘大船要装载货物。 货物已装箱，所有集装箱的尺寸均相同。 不同的容器可能具有不同的重量。令$w_i(1\leq i \leq n)$为第i个容器的重量。该船的载货量为c。
-问题：我们希望以最大数量的集装箱装船。
-我们期望得到$max\{\sum_{i=1}^n x_i\}$ 实际的状态分析为$$\begin{cases}\sum_{i=1}^n x_iw_i \leq c,  \\  x_i \in\{0,1\} \end{cases}$$
-
-优化问题是从所有可行的解决方案中找到最佳解决方案的问题。它由三个部分组成
-一组决策变量：$x_i(1 \leq i \leq n)$目标函数$f(x_1，\cdots，x_n)$；一组约束$g_i(x_1，\cdots，x_n)\leq 0(  1 \leq i \leq m)$；可行解：满足约束的实例最优解：优化(最大/最小)目标函数的实例
-
-
+<p><font size =4>装货问题</font></p>
+<p>一艘大船要装载货物。 货物已装箱，所有集装箱的尺寸均相同。 不同的容器可能具有不同的重量。令$w_i(1\leq i \leq n)$为第i个容器的重量。该船的载货量为c。<br>问题：我们希望以最大数量的集装箱装船。<br>我们期望得到$max{\sum_{i=1}^n x_i}$ 实际的状态分析为$$\begin{cases}\sum_{i=1}^n x_iw_i \leq c,  \  x_i \in{0,1} \end{cases}$$</p>
+<p>优化问题是从所有可行的解决方案中找到最佳解决方案的问题。它由三个部分组成<br>一组决策变量：$x_i(1 \leq i \leq n)$目标函数$f(x_1，\cdots，x_n)$；一组约束$g_i(x_1，\cdots，x_n)\leq 0(  1 \leq i \leq m)$；可行解：满足约束的实例最优解：优化(最大/最小)目标函数的实例</p>
 <h3 id="1-2-Greedy-procedures"><a href="#1-2-Greedy-procedures" class="headerlink" title="1.2 Greedy procedures"></a>1.2 Greedy procedures</h3><p>构造此类优化问题解决方案的一种方法是贪婪方法，其中分阶段构造了解决方案。<br>在每个阶段，我们都会根据某些贪婪的标准做出当时看来最好的决定，并且在以后的阶段不会更改。因此，每个决定都应假设可行。尽管贪婪方法并不总是导致最优解，例如在稍后将要讨论的0/1背包问题中，但在其他情况下确实如此。<br>贪婪算法是遵循在每个阶段做出局部最优选择以寻求全局最优的问题解决启发式算法。<br>通常，贪心算法具有五个组成部分：</p>
 <p>1.候选集，从已有的方法中进行挑选<br>2.选择功能，选择要添加到解决方案中的最佳候选项<br>3.可行性函数，用于确定候选项是否可用于解决方案<br>4.目标函数，其中为解决方案或部分解决方案以及功能分配值<br>5.解决方案，这将指示我们何时发现了完整的解决方案<br>1初始化C为候选解的集合<br>2初始化集合S =空集合(该集合为我们正在构建的最优解)。<br>3虽然$C\ne\theta$并且S(仍然)不是解<br>3.1. 运用贪心算法从C中选取一个元素为X<br>3.2. 将X从C中删除<br>3.3. 如果 ${x} ∪ S$ 是一个可行解 ，那么$S = S ∪ x$<br>4 如果S 是解决方法就进行返回 ；否则进行报错</p>
 <pre><code class="c">//the soluntion in the file
