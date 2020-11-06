@@ -75,6 +75,11 @@
         <span class="percentage animated fadeIn faster">0%</span>
         <span class="iconfont icon-top02 animated fadeIn faster"></span>
     </div>
+    <!--代码块复制功能-->
+    <script type='text/javascript' src='/js/src/clipboard.js'></script>
+    <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+    <!--{#复制版权申明#}-->
+    <script type="text/javascript" src="/js/src/copyright.js"></script>
 </body>
 <footer>
     <p class="copyright" id="copyright">
@@ -88,6 +93,25 @@
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+    <p clas = "time" id = "time">
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("08/11/2019 17:38:00");//在此处修改你的建站时间
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+        setInterval("createtime()",250);
+        </script>
     </p>
 </footer>
 
@@ -339,6 +363,8 @@
             initValine();
         });
     </script>
+
+
 
 
 

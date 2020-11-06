@@ -101,13 +101,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.9k
+                    5.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    6 mins.
+                    9 mins.
                 </span>
                 
                 
@@ -168,17 +168,52 @@
 <p>人的身体与蝴蝶的双翼又有什么两样呢？如果活着的时候不能自由飞翔，展现这片赤诚的身心，让我们成为宇宙众生迈向幸福的阶梯，反而成为庸俗人类物质化的踏板，则人生就失去其意义，空到人间走一回了！</p>
 <p>下山的时候，我想，让我恒久保有对人间有情的胸怀，以及一直保持对生活从容的步履；让我永远做一个为众生奉茶供水，在热闹中得到清凉的人。</p>
 <p>——《热闹中得到清凉》，林清玄</p>
-<pre><code class="c++">Union(x,y)
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><pre><code class="c++">Union(x,y)
 a = find-set(x); b = find-set(y);
 if(a.height &lt;= b.height){
     if(a.height == b.height) { b.height++;}
     a-&gt;parent = b;
     else b-&gt;parent = a;
 }</code></pre>
+<h2 id="GIF测试"><a href="#GIF测试" class="headerlink" title="GIF测试"></a>GIF测试</h2><div align=center>
+![动图展示](/img/test.gif)
+</div>
+
+<h2 id="视频播放"><a href="#视频播放" class="headerlink" title="视频播放"></a>视频播放</h2><h2 id="图表测试"><a href="#图表测试" class="headerlink" title="图表测试"></a>图表测试</h2><div style="width: 90%;margin: 0 auto">
+    <canvas id="chart6998" style="height: 300px"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script type="text/javascript">
+    var ctx = document.getElementById('chart6998').getContext('2d');
+    var options = {
+    "type":"horizontalBar", //  水平柱状图
+    "data":{
+        "labels":["January","February","March","April","May","June","July"],
+        "datasets":[{
+            "label":"My First Dataset",
+            "data":[65,59,80,81,56,55,40],
+            "fill":false,
+            "backgroundColor":["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],
+            "borderColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],
+            "borderWidth":1
+        }]
+    },
+            "options":{
+                "scales":{
+                    "xAxes":[{
+                        "ticks":{
+                            "beginAtZero":true
+                        }
+                    }]
+                }
+            }
+};
+    new Chart(ctx, options);
+</script>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
-                data-autoplay="false">
+                data-autoplay="true">
                 <source type="audio/mpeg" src="Revolve.mp3">
             </audio>
             
@@ -214,7 +249,7 @@ if(a.height &lt;= b.height){
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图片测试"><span class="toc-number">1.</span> <span class="toc-text">图片测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章测试"><span class="toc-number">2.</span> <span class="toc-text">文章测试</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图片测试"><span class="toc-number">1.</span> <span class="toc-text">图片测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章测试"><span class="toc-number">2.</span> <span class="toc-text">文章测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码测试"><span class="toc-number">3.</span> <span class="toc-text">代码测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIF测试"><span class="toc-number">4.</span> <span class="toc-text">GIF测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频播放"><span class="toc-number">5.</span> <span class="toc-text">视频播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图表测试"><span class="toc-number">6.</span> <span class="toc-text">图表测试</span></a></li></ol>
                 </div>
             </div>
             
@@ -230,6 +265,11 @@ if(a.height &lt;= b.height){
         <span class="percentage animated fadeIn faster">0%</span>
         <span class="iconfont icon-top02 animated fadeIn faster"></span>
     </div>
+    <!--代码块复制功能-->
+    <script type='text/javascript' src='/js/src/clipboard.js'></script>
+    <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+    <!--{#复制版权申明#}-->
+    <script type="text/javascript" src="/js/src/copyright.js"></script>
 </body>
 <footer>
     <p class="copyright" id="copyright">
@@ -243,6 +283,25 @@ if(a.height &lt;= b.height){
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+    <p clas = "time" id = "time">
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("08/11/2019 17:38:00");//在此处修改你的建站时间
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+        setInterval("createtime()",250);
+        </script>
     </p>
 </footer>
 
@@ -494,6 +553,8 @@ if(a.height &lt;= b.height){
             initValine();
         });
     </script>
+
+
 
 
 
