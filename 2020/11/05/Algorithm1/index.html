@@ -3,6 +3,7 @@
 <html lang="ch" class="loading">
 <head>
     <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Algorithms:chapter-02 - 独行·侠</title>
@@ -38,7 +39,8 @@
     
 <link rel="stylesheet" href="/css/ball-atom.min.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
 <body class="loading">
@@ -156,80 +158,80 @@
 <p>1.候选集，从已有的方法中进行挑选<br>2.选择功能，选择要添加到解决方案中的最佳候选项<br>3.可行性函数，用于确定候选项是否可用于解决方案<br>4.目标函数，其中为解决方案或部分解决方案以及功能分配值<br>5.解决方案，这将指示我们何时发现了完整的解决方案<br>1初始化C为候选解的集合<br>2初始化集合S =空集合(该集合为我们正在构建的最优解)。<br>3虽然$C\ne\theta$并且S(仍然)不是解<br>3.1. 运用贪心算法从C中选取一个元素为X<br>3.2. 将X从C中删除<br>3.3. 如果 ${x} ∪ S$ 是一个可行解 ，那么$S = S ∪ x$<br>4 如果S 是解决方法就进行返回 ；否则进行报错</p>
 <pre><code class="c">//the soluntion in the file
 s = 0; a = 0; i = 1;  d = 0;
-for ( j = 1 ; j &lt;= n; ++j){
+for ( j = 1 ; j &lt;= n; ++j)&#123;
     x[i] = 0;
-}
-while ((i &lt;= n) &amp;&amp; (a &lt; t)){
+&#125;
+while ((i &lt;= n) &amp;&amp; (a &lt; t))&#123;
     x[i] = a[i]; //take it in order of s[i]
     a += x[i];  //total mount so far
     a += x[i]*s[i]; //total satisfaction so far
     ++i;
-}
-if(a &lt; t) {return 1;}   //no way to take  t,failure
-else{
+&#125;
+if(a &lt; t) &#123;return 1;&#125;   //no way to take  t,failure
+else&#123;
     --i;d = a-t;
     x[i] = d;   //adjust the last one
     s -= d*s[i];
     return 0;   //x[n] contains the solution
-}</code></pre>
+&#125;</code></pre>
 <pre><code class="c++">//the total soluntion completed
 #include &lt;iostream&gt;
 using namespace std;
 
 typedef struct tagBeverage
-{
+&#123;
    char beveName[20];         //饮料名称
    int beveMeasure;           //饮料的数量
    int beveSactisfaction;     //婴儿对该饮料的满意度
-}BEVERAGE, *PBEVERAGE;
+&#125;BEVERAGE, *PBEVERAGE;
 
 //婴儿所需饮料总数
 int baby_require = 100;
 
 //初始化饮料数组
-BEVERAGE beveArray[3] = {{"water", 10, 60}, {"coco", 40, 40}, {"pasi", 80, 80}};
+BEVERAGE beveArray[3] = &#123;&#123;"water", 10, 60&#125;, &#123;"coco", 40, 40&#125;, &#123;"pasi", 80, 80&#125;&#125;;
 
 //寻找满意度最高的饮料ID
-int findHighestSactisfy(BEVERAGE beveArray[], int n, int highestBeve=0, int highestBeveSatisfy=0){
-   for(int i=0; i&lt;n; i++){
+int findHighestSactisfy(BEVERAGE beveArray[], int n, int highestBeve=0, int highestBeveSatisfy=0)&#123;
+   for(int i=0; i&lt;n; i++)&#123;
       if((beveArray[i].beveSactisfaction &gt; highestBeveSatisfy) &amp;&amp; (beveArray[i].beveMeasure &gt; 0))
-      {
+      &#123;
          highestBeve = i;
          highestBeveSatisfy = beveArray[i].beveSactisfaction;
-      }
-   }
+      &#125;
+   &#125;
    return highestBeve;
-}
+&#125;
 
 //算法函数
-void satisfyThirsty(BEVERAGE beveArray[], int n){
+void satisfyThirsty(BEVERAGE beveArray[], int n)&#123;
    int i, highestBeve=0, highestSatisfy=0;
    do
-   {
+   &#123;
       i = findHighestSactisfy(beveArray, 3);
-      if((baby_require -= beveArray[i].beveMeasure) &gt; 0){
+      if((baby_require -= beveArray[i].beveMeasure) &gt; 0)&#123;
          cout&lt;&lt;&quot;Baby enjoyed &quot;&lt;&lt;beveArray[i].beveName&lt;&lt;&quot; &quot;
                      &lt;&lt;beveArray[i].beveMeasure&lt;&lt;&quot; Ansi&quot;&lt;&lt;endl;
          cout&lt;&lt;&quot;Beverage sactisfaction is &quot;&lt;&lt;beveArray[i].beveSactisfaction&lt;&lt;endl;
          beveArray[i].beveMeasure = 0;
-      }
-      else {
+      &#125;
+      else &#123;
         int drunk = beveArray[i].beveMeasure + baby_require;
         cout&lt;&lt;&quot;Baby enjoyed &quot;&lt;&lt;beveArray[i].beveName&lt;&lt;&quot; &quot;
                     &lt;&lt;drunk&lt;&lt;&quot; Ansi&quot;&lt;&lt;endl;
         cout&lt;&lt;&quot;Beverage sactisfaction is &quot;&lt;&lt;beveArray[i].beveSactisfaction&lt;&lt;endl;
         baby_require = 0;
         beveArray[i].beveMeasure -= drunk;
-      }
+      &#125;
       cout&lt;&lt;&quot;Beverage &quot;&lt;&lt;beveArray[i].beveName&lt;&lt;&quot; left &quot;&lt;&lt;beveArray[i].beveMeasure&lt;&lt;&quot; Ansi&quot;&lt;&lt;endl;
-   }while(baby_require);
-}
+   &#125;while(baby_require);
+&#125;
 
-int main(){
+int main()&#123;
    satisfyThirsty(beveArray, 3);
    system(&quot;pause&quot;);
    return 0;
-}
+&#125;
 /*
 result:
 Baby enjoyed pasi 80 Ansi
@@ -249,7 +251,7 @@ Beverage coco left 30 Ansi
 
 <pre><code class="c++">//the soluntion in the file
 template＜class T＞
-void ContainerLoading(int x[i],T w[],T c,int n){//货箱装船问题的贪婪算法
+void ContainerLoading(int x[i],T w[],T c,int n)&#123;//货箱装船问题的贪婪算法
 //x[i]＝1当且仅当货箱i被装载， 1&lt;=i&lt;=n
 // C是船的容量，w是货箱的重量
 //对重量按间接寻址方式排序
@@ -258,13 +260,13 @@ int ＊t＝ new int ［n＋1；
 IndirectSort(w，t， n)；
 //此时， w[t[i]] &lt;= w[t[i+1]], 1&lt;=i&lt;n
 //初始化x
-for (int i = 1；i &lt;=n； i++){xi＝0;}
+for (int i = 1；i &lt;=n； i++)&#123;xi＝0;&#125;
 //按重量次序选择物品
-for (i = 1；i &lt;= n &amp;&amp; w[t[i]] ＜c; ++i) {
+for (i = 1；i &lt;= n &amp;&amp; w[t[i]] ＜c; ++i) &#123;
 x[t[i]] = 1；
 c -= w[t[i]]; //剩余容量
 delete []t；
-}</code></pre>
+&#125;</code></pre>
 <pre><code class="c++">//the total soluntion completed
 #include &lt;iostream&gt;
 using namespace std;
@@ -275,45 +277,45 @@ const int max_N=500;
 
 //用结构体描述货物的结构(重量、价值)
 struct goods
-{
+&#123;
     float w;//weight
     float p;//price
     float pw;//价重比，p/w
-}g[max_N];//用结构体数组，调用p,w,pw;(max_N必须为常整数)
+&#125;g[max_N];//用结构体数组，调用p,w,pw;(max_N必须为常整数)
 
 int main()
-{
+&#123;
     int i,j;
     cout&lt;&lt;&quot;输入最大载重量和货物的件数&quot;&lt;&lt;endl;
     cin&gt;&gt;M&gt;&gt;N;
 
     cout&lt;&lt;&quot;输入各货物的重量和价值&quot;&lt;&lt;endl;
-    for(i=0;i&lt;N;++i){//输入重量和价值，并计算价重比
+    for(i=0;i&lt;N;++i)&#123;//输入重量和价值，并计算价重比
     cin&gt;&gt;g[i].w&gt;&gt;g[i].p;
     g[i].pw=(g[i].p)/(g[i].w);
-    }
+    &#125;
     goods temp;
-    for(i = 0; i &lt; N-1; ++i){//用冒泡排序对价重比进行由大到小排序
-        for(j = i+1; j &lt; N; ++j){
-            if(g[i].pw &lt; g[j].pw){
+    for(i = 0; i &lt; N-1; ++i)&#123;//用冒泡排序对价重比进行由大到小排序
+        for(j = i+1; j &lt; N; ++j)&#123;
+            if(g[i].pw &lt; g[j].pw)&#123;
                 temp = g[i];
                 g[i] = g[j];
                 g[j] = temp;
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
 
     float sum_w = 0;//记录装入船的总重量
     float sum_p = 0;//记录装入船的货物的总价值
     int r = 0;//记录装入船的货物的件数
-    while(sum_w+g[r].w &lt;= M &amp;&amp; r &lt; N){
+    while(sum_w+g[r].w &lt;= M &amp;&amp; r &lt; N)&#123;
         sum_w+=g[r].w;
         sum_p+=g[r].p;
         r++;
-    }
+    &#125;
     cout&lt;&lt;sum_p&lt;&lt;endl;//输出装入船的货物的最大价值
     return 0;
-}</code></pre>
+&#125;</code></pre>
 <h3 id="1-3-Correctness-proof"><a href="#1-3-Correctness-proof" class="headerlink" title="1.3 Correctness proof"></a>1.3 Correctness proof</h3><p>略</p>
 <h2 id="2-Topological-Sorting-Problem"><a href="#2-Topological-Sorting-Problem" class="headerlink" title="2.Topological Sorting Problem"></a>2.Topological Sorting Problem</h2><h3 id="2-1-Problem-Statement"><a href="#2-1-Problem-Statement" class="headerlink" title="2.1 Problem Statement"></a>2.1 Problem Statement</h3><p>AOV(顶点活动)网络是有向图，其中顶点表示任务或活动，边表示任务之间的优先级关系。AOV网络的拓扑排序是其顶点的线性排序，因此对于从顶点u到顶点v的每个有向边u_v，排序中u都位于v之前。形式上，给定有向图G =(V，E)，需要找到顶点的线性排序，使得对于E中的所有边(v，w)，v均在排序的w之前。</p>
 <h3 id="2-2-Greedy-Solutions"><a href="#2-2-Greedy-Solutions" class="headerlink" title="2.2 Greedy Solutions"></a>2.2 Greedy Solutions</h3><p>解决方法：利用贪心算法<br>    步骤一：首先找到入度为0的顶点，如果没有这样的顶点，那么图为环，程序退出；否则选择顶点$n_0$并进行标记；<br>    步骤二：输出顶点$n_0$并将顶点$n_0$从图中去除，同时将邻接顶点的入度减1；<br>    步骤三：重复步骤一和步骤二直到图为空(无顶点)<br>实现贪心算法需要解决两个基本问题。第一个为如何储存图的数据，可以采用邻接矩阵和邻接表两种形式。第二个为如何存储入度为零的结点，可以采用数组法和队列法。</p>
@@ -328,44 +330,44 @@ int main()
 <p>UNION-find问题<br>一般设置是通过操作集合分散的$S_1，S_2，\cdots，S_k$顶点：<br>        Create-Set(x)：创建集合{x}。<br>        Find-Set(x)：返回包含x的集合的唯一ID(这只是该集合的某些代表性元素)。<br>        Union(x，y)：用单个集合S∪S’替换集合x在(被称为S)，集合y在(被称为S’)。<br>Up-tree实现：每个节点(根除外)都有一个指向其父节点的指针。 根元素具有指向自身的指针。<br>复杂性分析<br>        Create-Set(x)：需要固定的时间。<br>        Find-Set(x)：与x与其根$(O(\lg n))$的(原始)距离成比例。<br>        Union(x，y)：按高度使用Union，得出$O(\lg n)$</p>
 <pre><code class="c++">Union(x,y)
 a = find-set(x); b = find-set(y);
-if(a.height &lt;= b.height){
-    if(a.height == b.height) { b.height++;}
+if(a.height &lt;= b.height)&#123;
+    if(a.height == b.height) &#123; b.height++;&#125;
     a-&gt;parent = b;
     else b-&gt;parent = a;
-}</code></pre>
+&#125;</code></pre>
 <pre><code class="c++">//Sort E in increasing order by weight O(Elog(E))
-A={}
+A=&#123;&#125;
 for( each u in V) CREAT-SET(u); //O(V)
 
 for( e_i = (u_i,v_i))from 1 to E    //O(Elog(V))
-    if( Find-set(u_i) != Find-set(v_i)){
-        add{u_i,v_i} to A;
+    if( Find-set(u_i) != Find-set(v_i))&#123;
+        add&#123;u_i,v_i&#125; to A;
         UNION(u_i,v_i);
-    }
+    &#125;
 return A;</code></pre>
 <p>证明：略</p>
 <h3 id="3-3-Prim-algorithm"><a href="#3-3-Prim-algorithm" class="headerlink" title="3.3 Prim algorithm"></a>3.3 Prim algorithm</h3><p>基本算法的运行方式是，从任意起始顶点一次构建一个MST，然后在每个步骤中添加从树到另一顶点的尽可能便宜的连接</p>
 <p>基本过程/概述算法<br>步骤0：选择任意元素r并设置S = {r}和A =∅。  (将r作为生成树的根。)<br>步骤1：找到最小的边，使一个端点位于S处，另一个在V − S中。将此边添加到A并将其端点添加到S<br>步骤2：如果V-S =∅，则停止并输出MST(S，A)，否则返回步骤1</p>
 <p>问题1：算法如何找到最亮的边缘并有效地更新？<br>答案1：使用优先级队列找到最亮的边缘，使用$pred[v]$更新A。<br>问题2：算法如何有效地更新？<br>答案2：着色顶点。 初始化为白色。 当顶点移动到S时，将颜色更改为黑色。 使用color [v]存储。</p>
-<pre><code class="c++">Prim (G,w,r){
- for each u ∈ V{
+<pre><code class="c++">Prim (G,w,r)&#123;
+ for each u ∈ V&#123;
     key[u] = +∞；
     color[u] = W;
-    }
+    &#125;
     key[r] = 0;
     pred[r] = NIL;
     Q = new PriQueue(V);
-    while ( Q is  nonoempty){
+    while ( Q is  nonoempty)&#123;
         u = Q.extractMin();
-        for each(v ∈ adj[u]){
+        for each(v ∈ adj[u])&#123;
             if((color[v]) == W) &amp;&amp; (W[u,v] &lt; key[v])
                 key[v] = w[u,v];
                 Q.decreaseKey(v,key[v]);
                 pred[v] = u;
-        }
+        &#125;
         color[u] = B;
-    }
-}</code></pre>
+    &#125;
+&#125;</code></pre>
 <p>G由邻接表给出。<br>V-S中的顶点存储在优先级队列中，其优先级等于S中顶点的最亮边的值。<br>当算法终止时，Q =∅，MST为$T = {{v, predv(v)} : v ∈ (V − {r})}$<br>$pred$指针将MST定义为以r为根的倒置树</p>
 <p>令|V| = n和|E| = e。  $PriQueue$ 数据结构支持以下两个操作(请参阅CLRS教科书)<br>$extraxMin()$使用O(log n)从队列中提取每个顶点。<br>为每个顶点完成一次= $O(n \lg n)；decreaseKey()$取O(log n)来减小相邻顶点的键值。<br>每个边缘最多完成一次= O(e log n)<br>Prim算法的总时间为O((n + e)log n)</p>
 <h2 id="4-0-1-Knapsack-Problem"><a href="#4-0-1-Knapsack-Problem" class="headerlink" title="4.0/1 Knapsack Problem"></a>4.0/1 Knapsack Problem</h2><h3 id="Problem-statements"><a href="#Problem-statements" class="headerlink" title="Problem statements"></a>Problem statements</h3><p>给定n个编号从1到n的项目的集合，每个项目的权重为$w_i$，利润为$p_i$，最大权重为c，确定要包含在集合中的项目子集，以使总权重小于或等于 达到给定的限制，总利润尽可能大。 如果包含第i个，令$x_i = 1$，否则为0。<br>我们期望得到$\sum_{i=1}^n x_ip_i$ 实际的状态分析为$$\begin{cases}\sum_{i=1}^n x_iw_i&lt;c ,  \ x_i \in {0,1} \end{cases}$$</p>
