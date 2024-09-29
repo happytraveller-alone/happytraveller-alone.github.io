@@ -1,0 +1,49 @@
+.clipboard-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 8px;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 0 4px 0 4px;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    z-index: 10;
+}
+
+.clipboard-button:hover,
+.clipboard-button:focus {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
+}
+
+.clipboard-button svg {
+    fill: currentColor;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+.highlight {
+    position: relative;
+}
+
+.highlight:hover .clipboard-button {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .clipboard-button {
+        padding: 3px 6px;
+        font-size: 0.7em;
+    }
+
+    .clipboard-button svg {
+        width: 12px;
+        height: 12px;
+    }
+}
