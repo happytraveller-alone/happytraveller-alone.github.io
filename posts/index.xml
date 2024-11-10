@@ -1,13 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archives on 小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/posts/</link><description>Recent content in Archives on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><atom:link href="https://happytraveller-alone.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(零):Arduino编程</title><link>https://happytraveller-alone.github.io/posts/arduino_learn/</link><pubDate>Sat, 09 Nov 2024 13:04:20 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_learn/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>Arduino是一种开源电子平台，硬件和软件简单易学，非常适合入门嵌入式系统开发的初学者。Arduino平台通过代码控制硬件设备，如LED灯、按钮、马达等，帮助用户轻松实现自己的创意。本文将带你了解Arduino的基本编程框架及常用代码语句，帮助新手快速入门Arduino开发。&lt;/p></description></item><item><title>TLS模糊测试梳理</title><link>https://happytraveller-alone.github.io/posts/tls_anvil_test/</link><pubDate>Wed, 06 Nov 2024 11:20:01 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/tls_anvil_test/</guid><description>&lt;p>本篇博客对于TLS_Anvil论文进行梳理，对模糊测试中的部分概念以及TLS中的测试点进行记录。&lt;/p>
-
-
-
- &lt;blockquote class="dream-alert note">
- &lt;p class="heading">
- &lt;ion-icon name="information-circle-outline">&lt;/ion-icon>Test Oracle 的定义&lt;/p>
- &lt;p>Given the input for a system, the challenge of distinguishing the corresponding desired, correct behavior from potentially incorrect behavior is called the &amp;ldquo;test oracle problem&amp;rdquo;&lt;/p></description></item><item><title>变异器生成</title><link>https://happytraveller-alone.github.io/posts/custom_mutator/</link><pubDate>Fri, 25 Oct 2024 09:29:29 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/custom_mutator/</guid><description>&lt;p>本次博文用于梳理AFLplusplus的框架，Mutator在AFL及AFLplusplus中的定义，Custom Mutator在AFLplusplus中的定义，以及利用LLM进行Mutator Generation遇到的挑战。&lt;/p></description></item><item><title>智能小车(三):舵机模块与电机模块</title><link>https://happytraveller-alone.github.io/posts/servo_and_motor/</link><pubDate>Mon, 21 Oct 2024 20:24:27 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/servo_and_motor/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
-&lt;p>本节课关注于舵机模块的使用和电机模块的使用。舵机模块在小车中控制小车转向，电机模块控制小车前进后退。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archives on 小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/posts/</link><description>Recent content in Archives on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><atom:link href="https://happytraveller-alone.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(四):电机模块</title><link>https://happytraveller-alone.github.io/posts/motor/</link><pubDate>Sun, 10 Nov 2024 13:05:55 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/motor/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>本节课关注于电机模块的使用。电机模块在小车中控制小车运行(前进、后退、停止)。&lt;/p>
 &lt;h2 id="安全须知">安全须知&lt;/h2>
 &lt;script src='https://happytraveller-alone.github.io/js/pdf-js/build/pdf.js'>&lt;/script>
 
@@ -290,95 +282,302 @@ View the PDF file &lt;a class="pdf-source" id="pdf-source-noscript-435d6366-1" h
 &lt;/script>
 
 
-&lt;!-- raw HTML omitted -->
-&lt;h2 id="舵机和电机控制系统">舵机和电机控制系统&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ino" data-lang="ino">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;Servo.h&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;SoftPWM.h&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nc">Servo&lt;/span> &lt;span class="n">myservo&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="c1">//舵机对象
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">LeftBack&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">//2电机引脚
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">LeftFront&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">//4电机引脚
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">RightBack&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">7&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">//7电机引脚
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">RightFront&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">//8电机引脚
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">TurnPin&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">9&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">//转向舵机接口
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">setup&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">pinMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">OUTPUT&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">pinMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">OUTPUT&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">pinMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">OUTPUT&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">pinMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">OUTPUT&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">Serial&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">begin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">9600&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">myservo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">attach&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">TurnPin&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="c1">//对系统进行初始化，对引脚进行设置
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">SoftPWMBegin&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="nf">loop&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="n">myservo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">90&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">myservo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">160&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">myservo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">40&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">myservo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">90&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1000&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">200&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">200&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">500&lt;/span>&lt;span class="p">);&lt;/span> 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">500&lt;/span>&lt;span class="p">);&lt;/span> 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">200&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">200&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">500&lt;/span>&lt;span class="p">);&lt;/span> 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightFront&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LeftBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SoftPWMSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RightBack&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">500&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;h3 id="代码详解">代码详解&lt;/h3>
-&lt;ul>
-&lt;li>库文件和对象声明
-&lt;ul>
-&lt;li>引入&lt;code>Servo.h&lt;/code>和&lt;code>SoftPWM.h&lt;/code>库&lt;/li>
-&lt;li>创建一个&lt;code>Servo&lt;/code>对象&lt;code>myservo&lt;/code>用于控制前轮舵机&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>引脚定义:定义后轮电机的控制引脚;定义前轮舵机的控制引脚&lt;/li>
-&lt;li>&lt;code>setup()&lt;/code>函数
-&lt;ul>
-&lt;li>设置电机引脚为输出模式&lt;/li>
-&lt;li>初始化串口通信&lt;/li>
-&lt;li>将舵机对象与控制引脚关联&lt;/li>
-&lt;li>初始化软件PWM&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;code>loop()&lt;/code>函数
-&lt;ul>
-&lt;li>舵机控制（前轮转向）：
-&lt;ul>
-&lt;li>90°（直行）→ 160°（右转）→ 40°（左转）→ 90°（回正）&lt;/li>
-&lt;li>每个位置停留1秒&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>电机控制（后轮驱动）：
-&lt;ul>
-&lt;li>前进：后轮电机全速&lt;/li>
-&lt;li>停止：所有电机停止&lt;/li>
-&lt;li>后退：后轮电机全速反转&lt;/li>
-&lt;li>再次停止&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>每个动作持续500毫秒&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="系统说明">系统说明&lt;/h3>
-&lt;p>根据提供的信息，车辆的控制系统实际上是：&lt;/p></description></item><item><title>TLS变异报文生成</title><link>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</link><pubDate>Sun, 29 Sep 2024 13:56:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</guid><description>&lt;p>本文针对RFC规则抽取的过程进行详细说明，包括自然语言描述人工切分，手动划定转换节点，规则抽取工程，规则违反构建。本文以RFC8446文档举例说明，方法流程可以应用到其它具有网络状态转换的开源网络协议，例如RSTP。LLM基于GPT-4o-mini加系统提示词进行设计。&lt;/p></description></item><item><title>智能小车(二):超声波模块与蜂鸣器模块</title><link>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</link><pubDate>Tue, 15 Oct 2024 09:24:33 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;h2 id="什么是-pwm脉宽调制">什么是 PWM（脉宽调制）？&lt;/h2>
+&lt;p>PWM（Pulse Width Modulation，脉宽调制）是一种模拟输出信号的方法，广泛用于控制电机、LED亮度等设备。尽管 Arduino 等微控制器不能直接输出模拟电压信号，但可以通过 PWM 产生模拟效果。&lt;/p></description></item><item><title>智能小车(三):舵机模块与陀螺仪模块</title><link>https://happytraveller-alone.github.io/posts/servo/</link><pubDate>Sun, 10 Nov 2024 13:03:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/servo/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>本节课关注于舵机模块的使用和陀螺仪模块的使用。舵机模块在小车中控制小车转向，陀螺仪模块模块可以控制小车电机的运行速度。&lt;/p>
+&lt;h2 id="安全须知">安全须知&lt;/h2>
+&lt;script src='https://happytraveller-alone.github.io/js/pdf-js/build/pdf.js'>&lt;/script>
+
+&lt;style>
+ #embed-pdf-container {
+ position: relative;
+ width: 100%;
+ height: auto;
+ min-height: 20vh;
+ 
+ }
+ 
+ .pdf-canvas {
+ border: 1px solid black;
+ direction: ltr;
+ width: 100%;
+ height: auto;
+ display: none;
+ }
+ 
+ #the-canvas {
+ border: 1px solid black;
+ direction: ltr;
+ width: 100%;
+ height: auto;
+ display: none;
+ }
+ 
+ .pdf-paginator {
+ text-align: center;
+ }
+ .pdf-loadingWrapper {
+ display: none;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 350px;
+ }
+ 
+ .pdf-loading {
+ display: inline-block;
+ width: 50px;
+ height: 50px;
+ border: 3px solid #d2d0d0;;
+ border-radius: 50%;
+ border-top-color: #383838;
+ animation: spin 1s ease-in-out infinite;
+ -webkit-animation: spin 1s ease-in-out infinite;
+ }
+ 
+ #overlayText {
+ display: none;
+ }
+ 
+ #overlayText a {
+ position: relative;
+ top: 10px;
+ right: 4px;
+ color: #000;
+ margin: auto;
+ background-color: #eeeeee;
+ padding: 0.3em 1em;
+ border: solid 2px;
+ border-radius: 12px;
+ border-color: #00000030;
+ text-decoration: none;
+ }
+ 
+ #overlayText svg {
+ height: clamp(1em, 2vw, 1.4em);
+ width: clamp(1em, 2vw, 1.4em);
+ }
+ 
+ 
+ 
+ @keyframes spin {
+ to { -webkit-transform: rotate(360deg); }
+ }
+ @-webkit-keyframes spin {
+ to { -webkit-transform: rotate(360deg); }
+ }
+ &lt;/style>
+&lt;div class="embed-pdf-container" id="embed-pdf-container-435d6366-1">
+ &lt;div class="pdf-loadingWrapper" id="pdf-loadingWrapper-435d6366-1">
+ &lt;div class="pdf-loading" id="pdf-loading-435d6366-1">&lt;/div>
+ &lt;/div>
+ &lt;canvas class="pdf-canvas" id="pdf-canvas-435d6366-1">&lt;/canvas>
+&lt;/div>
+&lt;div class="pdf-paginator" id="pdf-paginator-435d6366-1">
+ &lt;button id="pdf-prev-435d6366-1">Previous&lt;/button>
+ &lt;button id="pdf-next-435d6366-1">Next&lt;/button> &amp;nbsp; &amp;nbsp;
+ &lt;span>
+ &lt;span class="pdf-pagenum" id="pdf-pagenum-435d6366-1">&lt;/span> / &lt;span class="pdf-pagecount" id="pdf-pagecount-435d6366-1">&lt;/span>
+ &lt;/span>
+ &lt;a class="pdf-source" id="pdf-source-435d6366-1" href="attention.pdf">[pdf]&lt;/a>
+&lt;/div>
+
+&lt;noscript>
+View the PDF file &lt;a class="pdf-source" id="pdf-source-noscript-435d6366-1" href="attention.pdf">here&lt;/a>.
+&lt;/noscript>
+
+
+&lt;script type="text/javascript">
+(function(){
+ class PDFViewer {
+ constructor(uniqueID, url, options) {
+ this.uniqueID = uniqueID;
+ this.url = url;
+ this.options = options;
+ this.pdfDoc = null;
+ this.pageNum = options.renderPageNum || 1;
+ this.pageRendering = false;
+ this.pageNumPending = null;
+ this.scale = 3;
+ this.canvas = document.getElementById(`pdf-canvas-${this.uniqueID}`);
+ this.ctx = this.canvas.getContext('2d');
+ this.paginator = document.getElementById(`pdf-paginator-${this.uniqueID}`);
+ this.loadingWrapper = document.getElementById(`pdf-loadingWrapper-${this.uniqueID}`);
+ this.pageSource = document.getElementById(`pdf-source-${this.uniqueID}`);
+ 
+ this.init();
+ }
+ 
+ init() {
+ this.applyOptions();
+ this.loadPDF();
+ }
+
+ applyOptions() {
+ if (this.options.hideLoader) {
+ this.loadingWrapper.style.display = 'none';
+ }
+ if (this.options.hidePaginator) {
+ this.paginator.style.display = 'none';
+ }
+ if (!this.options.showSource) {
+ this.pageSource.style.display = 'none';
+ }
+ }
+
+ 
+ loadPDF() {
+ if (!this.options.hideLoader) {
+ this.loadingWrapper.style.display = 'flex';
+ }
+ pdfjsLib.getDocument(this.url).promise.then((pdfDoc_) => {
+ this.pdfDoc = pdfDoc_;
+ const numPages = this.pdfDoc.numPages;
+ document.getElementById(`pdf-pagecount-${this.uniqueID}`).textContent = numPages;
+
+ if (this.pageNum > numPages) {
+ this.pageNum = numPages;
+ }
+
+ this.renderPage(this.pageNum);
+ });
+ }
+ 
+ renderPage(num) {
+ this.pageRendering = true;
+ this.pdfDoc.getPage(num).then((page) => {
+ const viewport = page.getViewport({scale: this.scale});
+ this.canvas.height = viewport.height;
+ this.canvas.width = viewport.width;
+
+ const renderContext = {
+ canvasContext: this.ctx,
+ viewport: viewport
+ };
+ const renderTask = page.render(renderContext);
+
+ renderTask.promise.then(() => {
+ this.pageRendering = false;
+ this.showContent();
+
+ 
+ if (this.options.watermark) {
+ this.addWatermark();
+ }
+ if (this.pageNumPending !== null) {
+ this.renderPage(this.pageNumPending);
+ this.pageNumPending = null;
+ }
+ });
+ });
+
+ document.getElementById(`pdf-pagenum-${this.uniqueID}`).textContent = num;
+ }
+ 
+ queueRenderPage(num) {
+ if (this.pageRendering) {
+ this.pageNumPending = num;
+ } else {
+ this.renderPage(num);
+ }
+ }
+ 
+ onPrevPage() {
+ if (this.pageNum &lt;= 1) {
+ return;
+ }
+ this.pageNum--;
+ this.queueRenderPage(this.pageNum);
+ }
+
+ onNextPage() {
+ if (this.pageNum >= this.pdfDoc.numPages) {
+ return;
+ }
+ this.pageNum++;
+ this.queueRenderPage(this.pageNum);
+ }
+ 
+ showContent() {
+ this.loadingWrapper.style.display = 'none';
+ this.canvas.style.display = 'block';
+ }
+
+ showLoader() {
+ if (this.options.hideLoader) {
+ return;
+ }
+ this.loadingWrapper.style.display = 'flex';
+ this.canvas.style.display = 'none';
+ }
+
+ showPaginator() {
+ this.paginator.style.display = this.options.hidePaginator ? 'none' : 'block';
+ }
+
+ showSource() {
+ this.pageSource.style.display = this.options.showSource ? 'inline' : 'none';
+ }
+
+ addWatermark() {
+ const ctx = this.canvas.getContext('2d');
+ ctx.save();
+ 
+ ctx.globalAlpha = 1;
+ ctx.font = this.options.watermarkFontSize + ' Arial';
+ ctx.fillStyle = this.options.watermarkColor;
+ ctx.textAlign = 'center';
+ ctx.textBaseline = 'middle';
+
+ const text = this.options.watermark;
+ const x = this.canvas.width / 2;
+ const y = this.canvas.height / 2;
+
+ ctx.translate(x, y);
+ ctx.rotate(-Math.PI / 4);
+ ctx.fillText(text, 0, 0);
+
+ ctx.restore();
+ }
+ }
+ 
+ 
+ var pdfjsLib = window['pdfjs-dist/build/pdf'];
+ pdfjsLib.GlobalWorkerOptions.workerSrc = "https:\/\/happytraveller-alone.github.io\/" + 'js/pdf-js/build/pdf.worker.js';
+ 
+ 
+ const viewer = new PDFViewer('435d6366-1', 'attention.pdf', {
+ hidePaginator: "true",
+ hideLoader: "false",
+ renderPageNum: parseInt("1") || 1,
+ showSource: "false",
+ watermark: "XYF",
+ watermarkColor: "rgba(0, 0, 0, 0.01)",
+ watermarkFontSize: "800px"
+ });
+
+ 
+ 
+ if (!viewer.options.hidePaginator) {
+
+ document.getElementById('pdf-prev-435d6366-1').addEventListener('click', () => viewer.onPrevPage());
+ document.getElementById('pdf-next-435d6366-1').addEventListener('click', () => viewer.onNextPage());
+ }
+})();
+&lt;/script>
+
+
+&lt;h2 id="舵机模块">舵机模块&lt;/h2>
+&lt;h3 id="servoh库">&lt;code>Servo.h&lt;/code>库&lt;/h3>
+&lt;p>&lt;code>Servo.h&lt;/code> 是 Arduino 的标准库，用于控制舵机。它可以控制 0-180 度的旋转角度，通过 PWM 信号来驱动伺服电机，广泛应用于小车、机器人转向等场景。&lt;/p></description></item><item><title>智能小车(零):Arduino编程</title><link>https://happytraveller-alone.github.io/posts/arduino_learn/</link><pubDate>Sat, 09 Nov 2024 13:04:20 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_learn/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>Arduino是一种开源电子平台，硬件和软件简单易学，非常适合入门嵌入式系统开发的初学者。Arduino平台通过代码控制硬件设备，如LED灯、按钮、马达等，帮助用户轻松实现自己的创意。本文将带你了解Arduino的基本编程框架及常用代码语句，帮助新手快速入门Arduino开发。&lt;/p></description></item><item><title>TLS模糊测试梳理</title><link>https://happytraveller-alone.github.io/posts/tls_anvil_test/</link><pubDate>Wed, 06 Nov 2024 11:20:01 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/tls_anvil_test/</guid><description>&lt;p>本篇博客对于TLS_Anvil论文进行梳理，对模糊测试中的部分概念以及TLS中的测试点进行记录。&lt;/p>
+
+
+
+ &lt;blockquote class="dream-alert note">
+ &lt;p class="heading">
+ &lt;ion-icon name="information-circle-outline">&lt;/ion-icon>Test Oracle 的定义&lt;/p>
+ &lt;p>Given the input for a system, the challenge of distinguishing the corresponding desired, correct behavior from potentially incorrect behavior is called the &amp;ldquo;test oracle problem&amp;rdquo;&lt;/p></description></item><item><title>变异器生成</title><link>https://happytraveller-alone.github.io/posts/custom_mutator/</link><pubDate>Fri, 25 Oct 2024 09:29:29 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/custom_mutator/</guid><description>&lt;p>本次博文用于梳理AFLplusplus的框架，Mutator在AFL及AFLplusplus中的定义，Custom Mutator在AFLplusplus中的定义，以及利用LLM进行Mutator Generation遇到的挑战。&lt;/p></description></item><item><title>TLS变异报文生成</title><link>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</link><pubDate>Sun, 29 Sep 2024 13:56:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</guid><description>&lt;p>本文针对RFC规则抽取的过程进行详细说明，包括自然语言描述人工切分，手动划定转换节点，规则抽取工程，规则违反构建。本文以RFC8446文档举例说明，方法流程可以应用到其它具有网络状态转换的开源网络协议，例如RSTP。LLM基于GPT-4o-mini加系统提示词进行设计。&lt;/p></description></item><item><title>智能小车(二):超声波模块与蜂鸣器模块</title><link>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</link><pubDate>Tue, 15 Oct 2024 09:24:33 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>本节课关注于超声波模块的使用和蜂鸣器模块的使用。超声波模块在小车中可以用于前方障碍物的距离测算，蜂鸣器模块可以用于小车速度，到障碍物距离等变量到达边界值时的声音提醒。&lt;/p></description></item><item><title>智能小车(一):Arduino介绍</title><link>https://happytraveller-alone.github.io/posts/arduino_and_led/</link><pubDate>Sat, 12 Oct 2024 13:57:02 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_and_led/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Arduino 是一个非常受欢迎的开源电子平台，特别适合想要学习嵌入式系统和单片机开发的初学者。它拥有丰富的硬件资源和一个简单易用的编程环境，使得很多复杂的项目变得易于实现。本篇博客将带领大家通过Arduino Nano开发板点亮LED灯，体验Arduino平台的简单与强大。&lt;/p></description></item><item><title>智能小车硬件介绍</title><link>https://happytraveller-alone.github.io/posts/smart_hardware/</link><pubDate>Fri, 11 Oct 2024 21:48:08 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/smart_hardware/</guid><description>&lt;h2 id="智能硬件基础从电路到传感器的探索之旅">智能硬件基础：从电路到传感器的探索之旅&lt;/h2>
 &lt;p>在这个日新月异的科技时代，智能硬件正在悄然改变我们的生活方式。无论是智能家居、可穿戴设备，还是工业自动化，智能硬件的应用无处不在。今天，让我们一起深入了解智能硬件的核心知识，从电路基础到传感器的奥秘。&lt;/p></description></item><item><title>TLS协议测试研究</title><link>https://happytraveller-alone.github.io/posts/tls_protocol_study/</link><pubDate>Sun, 29 Sep 2024 10:14:25 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/tls_protocol_study/</guid><description>&lt;p>本文从RFC8446（TLS1.3标准）文档出发，梳理TLS1.3协议，包括当前测试TLS的难点，TLS通信过程，TLS标准状态机，TLS涉及的CVE介绍，以及简单TLS报文的构建。&lt;/p></description></item><item><title>V8缺陷回看</title><link>https://happytraveller-alone.github.io/posts/v8_js_bug/</link><pubDate>Sat, 28 Sep 2024 20:52:35 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/v8_js_bug/</guid><description>&lt;p>本文针对在V8 JavaScript引擎中发现的一个缺陷进行说明。&lt;/p>
