@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/</link><description>Recent content on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><lastBuildDate>Tue, 19 Nov 2024 03:35:08 +0000</lastBuildDate><atom:link href="https://happytraveller-alone.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(四):电机模块</title><link>https://happytraveller-alone.github.io/posts/motor/</link><pubDate>Sun, 10 Nov 2024 13:05:55 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/motor/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/</link><description>Recent content on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><lastBuildDate>Wed, 27 Nov 2024 14:18:30 +0000</lastBuildDate><atom:link href="https://happytraveller-alone.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(五):PS2模块</title><link>https://happytraveller-alone.github.io/posts/ps2/</link><pubDate>Sun, 10 Nov 2024 14:07:37 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/ps2/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/beep_and_ultrasound/">智能小车(二):超声波模块与蜂鸣器模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/servo/">智能小车(三):舵机模块与陀螺仪模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/motor/">智能小车(四):电机模块&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="使用-ps2-手柄控制-arduino-电机与蜂鸣器">使用 PS2 手柄控制 Arduino 电机与蜂鸣器&lt;/h2>
+&lt;p>在这篇博客中，我们将使用 PS2 手柄控制 Arduino 控制系统，通过接收来自手柄的指令来实现对电机、蜂鸣器等外设的控制。这种手柄控制器的应用在遥控车辆、机器人等领域十分常见。接下来，我们将逐步深入，了解如何在 Arduino 上实现这一功能。&lt;/p></description></item><item><title>智能小车(四):电机模块</title><link>https://happytraveller-alone.github.io/posts/motor/</link><pubDate>Sun, 10 Nov 2024 13:05:55 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/motor/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/beep_and_ultrasound/">智能小车(二):超声波模块与蜂鸣器模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/servo/">智能小车(三):舵机模块与陀螺仪模块&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>本节课关注于电机模块的使用。电机模块在小车中控制小车运行(前进、后退、停止)。&lt;/p>
 &lt;h2 id="安全须知">安全须知&lt;/h2>
 &lt;script src='https://happytraveller-alone.github.io/js/pdf-js/build/pdf.js'>&lt;/script>
@@ -283,7 +299,13 @@ View the PDF file &lt;a class="pdf-source" id="pdf-source-noscript-435d6366-1" h
 
 
 &lt;h2 id="什么是-pwm脉宽调制">什么是 PWM（脉宽调制）？&lt;/h2>
-&lt;p>PWM（Pulse Width Modulation，脉宽调制）是一种模拟输出信号的方法，广泛用于控制电机、LED亮度等设备。尽管 Arduino 等微控制器不能直接输出模拟电压信号，但可以通过 PWM 产生模拟效果。&lt;/p></description></item><item><title>智能小车(三):舵机模块与陀螺仪模块</title><link>https://happytraveller-alone.github.io/posts/servo/</link><pubDate>Sun, 10 Nov 2024 13:03:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/servo/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+&lt;p>PWM（Pulse Width Modulation，脉宽调制）是一种模拟输出信号的方法，广泛用于控制电机、LED亮度等设备。尽管 Arduino 等微控制器不能直接输出模拟电压信号，但可以通过 PWM 产生模拟效果。&lt;/p></description></item><item><title>智能小车(三):舵机模块与陀螺仪模块</title><link>https://happytraveller-alone.github.io/posts/servo/</link><pubDate>Sun, 10 Nov 2024 13:03:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/servo/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/beep_and_ultrasound/">智能小车(二):超声波模块与蜂鸣器模块&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>本节课关注于舵机模块的使用和陀螺仪模块的使用。舵机模块在小车中控制小车转向，陀螺仪模块模块可以控制小车电机的运行速度。&lt;/p>
 &lt;h2 id="安全须知">安全须知&lt;/h2>
 &lt;script src='https://happytraveller-alone.github.io/js/pdf-js/build/pdf.js'>&lt;/script>
@@ -576,7 +598,12 @@ View the PDF file &lt;a class="pdf-source" id="pdf-source-noscript-435d6366-1" h
  &lt;blockquote class="dream-alert note">
  &lt;p class="heading">
  &lt;ion-icon name="information-circle-outline">&lt;/ion-icon>Test Oracle 的定义&lt;/p>
- &lt;p>Given the input for a system, the challenge of distinguishing the corresponding desired, correct behavior from potentially incorrect behavior is called the &amp;ldquo;test oracle problem&amp;rdquo;&lt;/p></description></item><item><title>变异器生成</title><link>https://happytraveller-alone.github.io/posts/custom_mutator/</link><pubDate>Fri, 25 Oct 2024 09:29:29 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/custom_mutator/</guid><description>&lt;p>本次博文用于梳理AFLplusplus的框架，Mutator在AFL及AFLplusplus中的定义，Custom Mutator在AFLplusplus中的定义，以及利用LLM进行Mutator Generation遇到的挑战。&lt;/p></description></item><item><title>TLS变异报文生成</title><link>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</link><pubDate>Sun, 29 Sep 2024 13:56:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</guid><description>&lt;p>本文针对RFC规则抽取的过程进行详细说明，包括自然语言描述人工切分，手动划定转换节点，规则抽取工程，规则违反构建。本文以RFC8446文档举例说明，方法流程可以应用到其它具有网络状态转换的开源网络协议，例如RSTP。LLM基于GPT-4o-mini加系统提示词进行设计。&lt;/p></description></item><item><title>智能小车(二):超声波模块与蜂鸣器模块</title><link>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</link><pubDate>Tue, 15 Oct 2024 09:24:33 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
+ &lt;p>Given the input for a system, the challenge of distinguishing the corresponding desired, correct behavior from potentially incorrect behavior is called the &amp;ldquo;test oracle problem&amp;rdquo;&lt;/p></description></item><item><title>变异器生成</title><link>https://happytraveller-alone.github.io/posts/custom_mutator/</link><pubDate>Fri, 25 Oct 2024 09:29:29 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/custom_mutator/</guid><description>&lt;p>本次博文用于梳理AFLplusplus的框架，Mutator在AFL及AFLplusplus中的定义，Custom Mutator在AFLplusplus中的定义，以及利用LLM进行Mutator Generation遇到的挑战。&lt;/p></description></item><item><title>TLS变异报文生成</title><link>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</link><pubDate>Sun, 29 Sep 2024 13:56:56 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/rfc_rule_generate/</guid><description>&lt;p>本文针对RFC规则抽取的过程进行详细说明，包括自然语言描述人工切分，手动划定转换节点，规则抽取工程，规则违反构建。本文以RFC8446文档举例说明，方法流程可以应用到其它具有网络状态转换的开源网络协议，例如RSTP。LLM基于GPT-4o-mini加系统提示词进行设计。&lt;/p></description></item><item><title>智能小车(二):超声波模块与蜂鸣器模块</title><link>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</link><pubDate>Tue, 15 Oct 2024 09:24:33 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/beep_and_ultrasound/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>本节课关注于超声波模块的使用和蜂鸣器模块的使用。超声波模块在小车中可以用于前方障碍物的距离测算，蜂鸣器模块可以用于小车速度，到障碍物距离等变量到达边界值时的声音提醒。&lt;/p></description></item><item><title>智能小车(一):Arduino介绍</title><link>https://happytraveller-alone.github.io/posts/arduino_and_led/</link><pubDate>Mon, 14 Oct 2024 13:57:02 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_and_led/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Arduino 是一个非常受欢迎的开源电子平台，特别适合想要学习嵌入式系统和单片机开发的初学者。它拥有丰富的硬件资源和一个简单易用的编程环境，使得很多复杂的项目变得易于实现。本篇博客将带领大家通过Arduino Nano开发板点亮LED灯，体验Arduino平台的简单与强大。&lt;/p></description></item><item><title>智能小车(零):Arduino编程</title><link>https://happytraveller-alone.github.io/posts/arduino_learn/</link><pubDate>Fri, 11 Oct 2024 13:04:20 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_learn/</guid><description>&lt;h2 id="概要">概要&lt;/h2>
 &lt;p>Arduino是一种开源电子平台，硬件和软件简单易学，非常适合入门嵌入式系统开发的初学者。Arduino平台通过代码控制硬件设备，如LED灯、按钮、马达等，帮助用户轻松实现自己的创意。本文将带你了解Arduino的基本编程框架及常用代码语句，帮助新手快速入门Arduino开发。&lt;/p></description></item><item><title>智能小车硬件介绍</title><link>https://happytraveller-alone.github.io/posts/smart_hardware/</link><pubDate>Thu, 10 Oct 2024 21:48:08 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/smart_hardware/</guid><description>&lt;h2 id="智能硬件基础从电路到传感器的探索之旅">智能硬件基础：从电路到传感器的探索之旅&lt;/h2>
