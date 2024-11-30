@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Smart_car on 小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/tags/smart_car/</link><description>Recent content in Smart_car on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><lastBuildDate>Wed, 27 Nov 2024 14:18:30 +0000</lastBuildDate><atom:link href="https://happytraveller-alone.github.io/tags/smart_car/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(五):PS2模块</title><link>https://happytraveller-alone.github.io/posts/ps2/</link><pubDate>Sun, 10 Nov 2024 14:07:37 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/ps2/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Smart_car on 小谢同学的修行小屋</title><link>https://happytraveller-alone.github.io/tags/smart_car/</link><description>Recent content in Smart_car on 小谢同学的修行小屋</description><generator>Hugo</generator><language>zh-Hans</language><lastBuildDate>Sat, 30 Nov 2024 04:51:33 +0000</lastBuildDate><atom:link href="https://happytraveller-alone.github.io/tags/smart_car/index.xml" rel="self" type="application/rss+xml"/><item><title>智能小车(六):Arduino程序的实际执行机制</title><link>https://happytraveller-alone.github.io/posts/arduino_compile/</link><pubDate>Wed, 27 Nov 2024 21:47:33 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/arduino_compile/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/beep_and_ultrasound/">智能小车(二):超声波模块与蜂鸣器模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/servo/">智能小车(三):舵机模块与陀螺仪模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/motor/">智能小车(四):电机模块&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/ps2">智能小车(五):PS2模块&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="引言">引言&lt;/h2>
+&lt;p>很多Arduino初学者都会困惑：为什么Arduino程序只需要写setup()和loop()这两个函数就能运行？程序的入口main()函数去哪了？今天就让我们揭开Arduino程序执行的神秘面纱。&lt;/p></description></item><item><title>智能小车(五):PS2模块</title><link>https://happytraveller-alone.github.io/posts/ps2/</link><pubDate>Sun, 10 Nov 2024 14:07:37 +0800</pubDate><guid>https://happytraveller-alone.github.io/posts/ps2/</guid><description>&lt;h2 id="历史回顾">历史回顾&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_learn/">智能小车(零):Arduino编程&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://happytraveller-alone.github.io/posts/arduino_and_led/">智能小车(一):Arduino介绍&lt;/a>&lt;/li>
